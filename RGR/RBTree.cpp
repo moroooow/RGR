@@ -14,11 +14,15 @@ namespace rbtree
 					it->second.push_back(translate);
 				}
 			}
+			it->second.sort();
 		}
 		else
 		{
-			tree_.emplace(std::make_pair(key, translates));
+			tree_.emplace(key, translates);
+			auto it = tree_.find(key);
+			it->second.sort();
 		}
+		
 	}
 
 	bool RBTree::searchElement(std::string& key) const
